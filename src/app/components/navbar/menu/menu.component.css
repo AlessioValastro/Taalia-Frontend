@@ -1,0 +1,43 @@
+:host {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 400;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 40px;
+}
+a {
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+#search {
+  background-color: #d8ff75;
+  height: 50px;
+  width: 50px;
+  outline: none;
+  border: none;
+  border-radius: 100%;
+  margin-left: 30px;
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+  transition: 0.1s ease;
+  &:hover {
+    height: 55px;
+  }
+}
+#search img {
+  height: 30px;
+  width: 30px;
+}
+
+.active-link {
+  color: #d8ff75;
+  text-decoration: underline;
+}
