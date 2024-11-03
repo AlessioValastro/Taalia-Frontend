@@ -1,26 +1,56 @@
 <section class="container">
   <img src="logo/gob/svg/logo-no-background.svg" alt="logo" />
   <h2>Salta su!</h2>
-  <p>entra nella community più <strong>hard</strong> di <strong>Catania</strong></p>
-  <form (ngSubmit)="onSubmit()">
+  <p>
+    entra nella community più <strong>hard</strong> di <strong>Catania</strong>
+  </p>
+  <form [formGroup]="formData" (ngSubmit)="onSubmit()">
     <p>
       <label for="name"></label>
-      <input type="text" placeholder="Nome" />
+      <input
+        name="name"
+        type="text"
+        placeholder="Nome"
+        formControlName="name"
+      />
+      @if (formData.get('name')?.invalid && formData.get('name')?.touched) {
+        {{ getErrorMessage('name')}}
+      }
     </p>
     <p>
       <label for="surname"></label>
-      <input type="text" placeholder="Cognome" />
+      <input
+        name="surname"
+        type="text"
+        placeholder="Cognome"
+        formControlName="surname"
+      />
+      @if (formData.get('surname')?.invalid && formData.get('surname')?.touched) {
+        {{ getErrorMessage('surname')}}
+      }
     </p>
     <p>
       <label for="email"></label>
-      <input type="email" placeholder="Email" />
+      <input type="email" placeholder="Email" formControlName="email" />
+      @if (formData.get('email')?.invalid && formData.get('email')?.touched) {
+        {{ getErrorMessage('email')}}
+      }
     </p>
     <p>
       <label for="password"></label>
-      <input type="password" placeholder="Password">
+      <input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+      @if (formData.get('password')?.invalid && formData.get('password')?.touched) {
+        {{ getErrorMessage('password')}}
+      }
     </p>
     <p class="actions">
-      <button type="submit" id="submit-button">Registrati</button>
+      <button type="submit" id="submit-button" [disabled]="!formData.valid">
+        Registrati
+      </button>
     </p>
   </form>
 </section>

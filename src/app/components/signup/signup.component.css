@@ -64,4 +64,7 @@ form input {
   border-radius: 5px;
 
   cursor: pointer;
+  &:disabled{
+    opacity: 0.5;
+  }
 }
