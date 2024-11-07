@@ -68,3 +68,9 @@ form input {
     opacity: 0.5;
   }
 }
+
+.error{
+  font-size: 1rem;
+  padding: 5px 10px 0;
+  color: rgba(216, 255, 117, 1);
+}

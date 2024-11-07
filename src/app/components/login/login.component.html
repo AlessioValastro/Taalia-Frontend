@@ -1,19 +1,36 @@
 <section class="container">
-    <img src="logo/gob/svg/logo-no-background.svg" alt="logo" />
-    <h2>Bentornato!</h2>
-    <p>ci sei mancato <strong>beddu</strong></p>
-    <form (ngSubmit)="onSubmit()">
-      <p>
-        <label for="email"></label>
-        <input type="email" placeholder="Email" />
-      </p>
-      <p>
-        <label for="password"></label>
-        <input type="password" placeholder="Password">
-      </p>
-      <p class="actions">
-        <button type="submit" id="submit-button">Accedi</button>
-      </p>
-    </form>
-  </section>
-  
+  <img src="logo/gob/svg/logo-no-background.svg" alt="logo" />
+  <h2>Bentornato!</h2>
+  <p>ci sei mancato <strong>beddu</strong></p>
+  <form [formGroup]="formData" (ngSubmit)="onSubmit()">
+    <p>
+      <label for="email"></label>
+      <input type="email" placeholder="Email" formControlName="email" />
+      @if (formData.get('email')?.invalid && formData.get('email')?.dirty &&
+      formData.get('email')?.touched) {
+      <label for="error" class="error">*{{ getErrorMessage("email") }}</label>
+      }
+    </p>
+    <p>
+      <label for="password"></label>
+      <input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+      @if (formData.get('password')?.invalid &&
+      formData.get('password')?.touched) {
+      <label for="error" class="error"
+        >*{{ getErrorMessage("password") }}</label
+      >
+      } @if( errMessage != ''){
+      <label for="error" class="error">*{{ errMessage }}</label>
+      }
+    </p>
+    <p class="actions">
+      <button type="submit" id="submit-button" [disabled]="!formData.valid">
+        Accedi
+      </button>
+    </p>
+  </form>
+</section>

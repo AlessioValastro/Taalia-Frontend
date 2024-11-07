@@ -14,7 +14,7 @@
         formControlName="name"
       />
       @if (formData.get('name')?.invalid && formData.get('name')?.touched) {
-        {{ getErrorMessage('name')}}
+      <label for="error" class="error">*{{ getErrorMessage("name") }}</label>
       }
     </p>
     <p>
@@ -25,15 +25,18 @@
         placeholder="Cognome"
         formControlName="surname"
       />
-      @if (formData.get('surname')?.invalid && formData.get('surname')?.touched) {
-        {{ getErrorMessage('surname')}}
+      @if (formData.get('surname')?.invalid && formData.get('surname')?.touched)
+      {
+      <label for="error" class="error">*{{ getErrorMessage("surname") }}</label>
       }
     </p>
     <p>
       <label for="email"></label>
       <input type="email" placeholder="Email" formControlName="email" />
       @if (formData.get('email')?.invalid && formData.get('email')?.touched) {
-        {{ getErrorMessage('email')}}
+      <label for="error" class="error">*{{ getErrorMessage("email") }}</label>
+      } @if( errMessage != ''){
+      <label for="error" class="error">*{{ errMessage }}</label>
       }
     </p>
     <p>
@@ -43,10 +46,14 @@
         placeholder="Password"
         formControlName="password"
       />
-      @if (formData.get('password')?.invalid && formData.get('password')?.touched) {
-        {{ getErrorMessage('password')}}
+      @if (formData.get('password')?.invalid &&
+      formData.get('password')?.touched) {
+      <label for="error" class="error"
+        >*{{ getErrorMessage("password") }}</label
+      >
       }
     </p>
+    <input type="hidden" value="p" formControlName="userType" />
     <p class="actions">
       <button type="submit" id="submit-button" [disabled]="!formData.valid">
         Registrati
