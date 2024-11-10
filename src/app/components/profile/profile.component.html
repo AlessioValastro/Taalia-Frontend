@@ -1,9 +1,19 @@
 <section class="container">
   <div class="container__content">
+    @if(loggedIn){
     <h1><strong>Eventi</strong> a cui parteciperai</h1>
     <div class="tickets">
-      <app-ticket />
-      <app-ticket />
+      @for (event of events; track event.id) {
+      <app-ticket
+        [title]="event.title"
+        [organizer]="event.organizer"
+        [date]="event.date"
+        [imgSrc]="event.img_src"
+      />
+      }
     </div>
+    }@else {
+    <h1><strong>Accedi</strong> per vedere i tuoi biglietti</h1>
+    }
   </div>
 </section>

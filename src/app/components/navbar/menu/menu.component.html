@@ -1,3 +1,8 @@
+@if(!loggedIn){
 <a routerLink="login" routerLinkActive="active-link">Accedi</a>
 <a routerLink="signup" routerLinkActive="active-link">Registrati</a>
-<button id="search"><img src="icons/search.svg" alt="search-button"></button>
+}@else{
+<a>{{ userName }}</a>
+}
+
+<button id="search"><img src="icons/search.svg" alt="search-button" /></button>

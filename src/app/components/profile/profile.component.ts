@@ -1,7 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { TicketComponent } from './ticket/ticket.component';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { EventsService } from '../../services/events.service';
+import { Event } from '../../interfaces/event';
 
 @Component({
   selector: 'app-home',
@@ -13,26 +15,54 @@ import { Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
   userType!: string;
   userID!: number;
-  loggedIn: boolean = false;
-  httpClient = inject(HttpClient);
+  userName!: string;
+  loggedIn!: boolean;
+
+  events?: [Event];
+
+  authService = inject(AuthService);
+  eventsService = inject(EventsService);
   router = inject(Router);
 
   ngOnInit(): void {
-    /*this.httpClient.get('/api/check-session').subscribe({
-      next: (response) => {
-        console.log(response);
+    this.authService.checkAuth().subscribe({
+      next: (response: any) => {
         if (!response.logged_in) {
           this.router.navigate(['/login']);
         } else {
+          console.log(response);
           this.userType = response.user_type;
           this.userID = response.user_id;
-          localStorage.setItem('userID', this.userID.toString());
+          this.userName = response.name;
+          this.loggedIn = true;
+          this.authService.updateLoginStatus(true);
+          this.authService.updateUser(
+            this.userName,
+            this.userType,
+            this.userID
+          );
+
+          this.loadEvents();
         }
       },
       error: (err) => {
         console.error('Errore verifica sessione:', err);
         this.router.navigate(['/login']);
       },
-    });*/
+    });
+  }
+
+  loadEvents(): void {
+    if (this.userID) {
+      this.eventsService.getEventsList(this.userID).subscribe({
+        next: (response: any) => {
+          console.log(response);
+          this.events = response;
+        },
+        error: (err) => {
+          console.error(err);
+        },
+      });
+    }
   }
 }

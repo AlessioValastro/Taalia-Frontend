@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -24,9 +25,10 @@ export class LoginComponent {
       Validators.minLength(8),
     ]),
   });
-  httpClient = inject(HttpClient);
+  http = inject(HttpClient);
   errMessage: string = '';
-  router= inject(Router);
+  router = inject(Router);
+  authService = inject(AuthService);
 
   getErrorMessage(fieldName: string): string {
     const control = this.formData.get(fieldName);
@@ -42,19 +44,35 @@ export class LoginComponent {
     return '';
   }
 
+  ngOnInit(): void {
+    this.authService.checkAuth().subscribe({
+      next: (response: any) => {
+        if (response.logged_in) {
+          this.router.navigate(['/profile']);
+        }
+      },
+      error: (err) => {
+        console.error('Errore verifica sessione:', err);
+        this.router.navigate(['/login']);
+      },
+    });
+  }
+
   onSubmit() {
     if (this.formData.valid) {
       const data = this.formData.value;
-      this.httpClient
-        .post('api/login', data, { responseType: 'json' })
-        .subscribe({
-          next: () => {
-            this.router.navigate(['/profile']);
-          },
-          error: (err) => {
-            this.errMessage = err.error.message;
-          },
-        });
+      const email: string = data.email!;
+      const password: string = data.password!;
+
+      this.authService.login({ email, password }).subscribe({
+        next: () => {
+          this.authService.updateLoginStatus(true);
+          this.router.navigate(['profile']);
+        },
+        error: (error) => {
+          console.error('Errore di login:', error);
+        },
+      });
     }
   }
 }

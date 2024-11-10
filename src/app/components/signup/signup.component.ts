@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { response } from 'express';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -32,7 +33,7 @@ export class SignupComponent {
     userType: new FormControl('user'),
   });
 
-  httpClient = inject(HttpClient);
+  authService = inject(AuthService);
   errMessage: string = '';
   router: any;
 
@@ -53,16 +54,14 @@ export class SignupComponent {
   onSubmit() {
     if (this.formData.valid) {
       const data = this.formData.value;
-      this.httpClient
-        .post('api/signup', data, { responseType: 'json' })
-        .subscribe({
-          next: () => {
-            this.router.navigate(['/profile']);
-          },
-          error: (err) => {
-            this.errMessage = err.error.message;
-          },
-        });
+      this.authService.signup(data).subscribe({
+        next: () => {
+          this.router.navigate(['/profile']);
+        },
+        error: (err) => {
+          this.errMessage = err.error.message;
+        },
+      });
     }
   }
 }

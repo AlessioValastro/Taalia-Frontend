@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { MenuComponent } from "./menu/menu.component";
 import { RouterLink } from '@angular/router';
 
@@ -10,5 +10,4 @@ import { RouterLink } from '@angular/router';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-
 }
