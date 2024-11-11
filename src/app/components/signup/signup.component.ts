@@ -14,28 +14,28 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './signup.component.css',
 })
 export class SignupComponent {
+  authService = inject(AuthService);
+  errMessage: string = '';
+  router: any;
+  
   formData = new FormGroup({
     name: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
-      Validators.pattern('^[a-zA-Z ]*$'),
+      Validators.pattern('^[a-zA-Z ]+$'),
     ]),
     surname: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
-      Validators.pattern('^[a-zA-Z ]*$'),
+      Validators.pattern('^[a-zA-Z ]+$'),
     ]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
     ]),
-    userType: new FormControl('user'),
+    status: new FormControl('', [Validators.required]),
   });
-
-  authService = inject(AuthService);
-  errMessage: string = '';
-  router: any;
 
   getErrorMessage(fieldName: string): string {
     const control = this.formData.get(fieldName);

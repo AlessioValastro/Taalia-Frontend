@@ -35,8 +35,6 @@
       <input type="email" placeholder="Email" formControlName="email" />
       @if (formData.get('email')?.invalid && formData.get('email')?.touched) {
       <label for="error" class="error">*{{ getErrorMessage("email") }}</label>
-      } @if( errMessage != ''){
-      <label for="error" class="error">*{{ errMessage }}</label>
       }
     </p>
     <p>
@@ -53,7 +51,20 @@
       >
       }
     </p>
-    <input type="hidden" value="p" formControlName="userType" />
+    <p>
+      <label for="status">Sei?</label>
+      <select formControlName="status" id="status">
+        <option value="student">Studente</option>
+        <option value="worker">Lavoratore</option>
+        <option value="unemployed">Disoccupato</option>
+      </select>
+      @if(formData.get('status')?.invalid && formData.get('status')?.touched){
+      <label for="error" class="error">*{{ getErrorMessage("status") }}</label>
+      }
+    </p>
+    @if( errMessage != ''){
+    <label for="error" class="error">*{{ errMessage }}</label>
+    }
     <p class="actions">
       <button type="submit" id="submit-button" [disabled]="!formData.valid">
         Registrati

@@ -21,8 +21,8 @@
   align-items: center;
   justify-content: space-between;
 }
-.container img{
-    width: 500px;
+.container img {
+  width: 500px;
 }
 .container h2 {
   font-size: 3rem;
@@ -52,6 +52,12 @@ form input {
   border: none;
 }
 
+form select {
+  padding: 5px 25px 5px 15px;
+  border-radius: 5px;
+  border: none;
+}
+
 #submit-button {
   color: #1e1e1e;
   background-color: rgba(216, 255, 117, 1);
@@ -64,12 +70,12 @@ form input {
   border-radius: 5px;
 
   cursor: pointer;
-  &:disabled{
+  &:disabled {
     opacity: 0.5;
   }
 }
 
-.error{
+.error {
   font-size: 1rem;
   padding: 5px 10px 0;
   color: rgba(216, 255, 117, 1);
