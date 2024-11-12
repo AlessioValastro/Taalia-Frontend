@@ -6,9 +6,9 @@
       @for (event of events; track event.id) {
       <app-ticket
         [title]="event.title"
-        [organizer]="event.organizer"
         [date]="event.date"
-        [imgSrc]="event.img_src"
+        [imgSrc]="event.img"
+        [organizer]="event.organizer.name"
       />
       }
     </div>
@@ -16,4 +16,5 @@
     <h1><strong>Accedi</strong> per vedere i tuoi biglietti</h1>
     }
   </div>
+  <app-events-carousel />
 </section>

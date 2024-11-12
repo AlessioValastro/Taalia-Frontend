@@ -4,11 +4,12 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { EventsService } from '../../services/events.service';
 import { Event } from '../../interfaces/event';
+import { EventsCarouselComponent } from "../events-carousel/events-carousel.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [TicketComponent],
+  imports: [TicketComponent, EventsCarouselComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
 })

@@ -1,0 +1,25 @@
+.events-carousel{
+  margin-bottom: 50px;
+  
+}
+.events-carousel h2 {
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+strong {
+  color: #d8ff75;
+  font-weight: 400;
+}
+.events {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 30px;
+}
+.wrapper {
+  zoom: 60%;
+}

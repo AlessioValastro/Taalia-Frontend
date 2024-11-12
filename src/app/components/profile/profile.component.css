@@ -1,27 +1,31 @@
-:host{
-    display: grid;
-    place-items: center;
+:host {
+  display: flex;
+  justify-content: center;
 
-    width: 100%;
-    min-height: 100vh;
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 150px;
 }
-.container{
-    width: 80%;
-    min-height: 70%;
+.container {
+  width: 80%;
+  min-height: 70%;
 }
-.container__content h1{
-    color: #fff;
-    font-size: 2.1rem;
-    font-weight: 300;
-    margin-bottom: 20px;
+.container__content {
+  margin-bottom: 50px;
 }
-strong{
-    color: #d8ff75;
-    font-weight: 400;
+.container__content h1 {
+  color: #fff;
+  font-size: 2.1rem;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+strong {
+  color: #d8ff75;
+  font-weight: 400;
 }
 
-.tickets{
-    display: flex;
-    align-items: center;
-    gap: 30px;
+.tickets {
+  display: flex;
+  align-items: center;
+  gap: 30px;
 }

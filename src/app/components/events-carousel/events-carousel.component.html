@@ -1,0 +1,15 @@
+<section class="events-carousel">
+  <h2>Esplora gli eventi di <strong>tendenza</strong></h2>
+  <div class="events">
+    @for (event of events; track event.id) {
+    <div class="wrapper">
+      <app-ticket
+        [title]="event.title"
+        [date]="event.date"
+        [imgSrc]="event.img"
+        [organizer]="event.organizer.name"
+      />
+    </div>
+    }
+  </div>
+</section>
