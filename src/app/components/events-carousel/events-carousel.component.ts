@@ -17,7 +17,6 @@ export class EventsCarouselComponent implements OnInit {
   ngOnInit() {
     this.eventsService.getAllEventsList().subscribe({
       next: (response: any) => {
-        console.log(response);
         this.events = response;
       },
       error: (err) => {

@@ -18,4 +18,6 @@ export class EventsService {
   getAllEventsList() {
     return this.http.get('api/get-all-events');
   }
+
+  
 }

@@ -31,7 +31,6 @@ export class ProfileComponent implements OnInit {
         if (!response.logged_in) {
           this.router.navigate(['/login']);
         } else {
-          console.log(response);
           this.userType = response.user_type;
           this.userID = response.user_id;
           this.userName = response.name;
@@ -57,7 +56,6 @@ export class ProfileComponent implements OnInit {
     if (this.userID) {
       this.eventsService.getEventsList(this.userID).subscribe({
         next: (response: any) => {
-          console.log(response);
           this.events = response;
         },
         error: (err) => {

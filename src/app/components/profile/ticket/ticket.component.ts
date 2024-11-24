@@ -1,9 +1,10 @@
 import { Component, input } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-ticket',
   standalone: true,
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './ticket.component.html',
   styleUrl: './ticket.component.css',
 })
