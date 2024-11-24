@@ -6,3 +6,7 @@
 }
 
 <button id="search"><img src="icons/search.svg" alt="search-button" /></button>
+
+@if(loggedIn){
+<a href="#" (click)="onLogout()">logout</a>
+}

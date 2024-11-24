@@ -11,7 +11,7 @@ import { EventsCarouselComponent } from "../events-carousel/events-carousel.comp
   standalone: true,
   imports: [TicketComponent, EventsCarouselComponent],
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css',
+  styleUrl: './profile.component.css'
 })
 export class ProfileComponent implements OnInit {
   userType!: string;
@@ -20,18 +20,19 @@ export class ProfileComponent implements OnInit {
   loggedIn!: boolean;
 
   events?: [Event];
-
   authService = inject(AuthService);
   eventsService = inject(EventsService);
   router = inject(Router);
 
   ngOnInit(): void {
-    this.authService.checkAuth().subscribe({
+    this.checkAuth();
+  }
+  checkAuth(){
+   this.authService.checkAuth().subscribe({
       next: (response: any) => {
         if (!response.logged_in) {
           this.router.navigate(['/login']);
         } else {
-          this.userType = response.user_type;
           this.userID = response.user_id;
           this.userName = response.name;
           this.loggedIn = true;
@@ -49,8 +50,9 @@ export class ProfileComponent implements OnInit {
         console.error('Errore verifica sessione:', err);
         this.router.navigate(['/login']);
       },
-    });
+    }); 
   }
+  
 
   loadEvents(): void {
     if (this.userID) {

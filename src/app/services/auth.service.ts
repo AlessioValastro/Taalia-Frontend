@@ -33,6 +33,12 @@ export class AuthService {
     });
   }
 
+  signupOrganizer(data: any) {
+    return this.http.post('api/signup-organizer', data, {
+      withCredentials: true,
+    });
+  }
+
   logout(): Observable<any> {
     return this.http.post('api/logout', {}, { withCredentials: true });
   }

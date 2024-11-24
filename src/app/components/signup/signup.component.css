@@ -15,6 +15,7 @@
   background: #1e1e1e;
   padding: 50px;
   border-radius: 10px;
+  margin-top: 50px;
 
   display: flex;
   flex-direction: column;
@@ -79,4 +80,9 @@ form select {
   font-size: 1rem;
   padding: 5px 10px 0;
   color: rgba(216, 255, 117, 1);
+}
+
+.switch-container{
+  display: flex;
+  gap: 20px;
 }

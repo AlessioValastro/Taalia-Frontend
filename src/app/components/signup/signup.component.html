@@ -1,9 +1,14 @@
 <section class="container">
+  <div class="switch-container">
+    <p>sei un organizzatore?</p>
+    <app-switch (switchChanged)="onSwitchChange($event)" />
+  </div>
   <img src="logo/gob/svg/logo-no-background.svg" alt="logo" />
   <h2>Salta su!</h2>
   <p>
     entra nella community più <strong>hard</strong> di <strong>Catania</strong>
   </p>
+  @if(!isOrganizer){
   <form [formGroup]="formData" (ngSubmit)="onSubmit()">
     <p>
       <label for="name"></label>
@@ -54,7 +59,7 @@
     <p>
       <label for="status">Sei?</label>
       <select formControlName="status" id="status">
-        <option value="student">Studente</option>
+        <option value="student" selected>Studente</option>
         <option value="worker">Lavoratore</option>
         <option value="unemployed">Disoccupato</option>
       </select>
@@ -71,4 +76,65 @@
       </button>
     </p>
   </form>
+  }@else {
+  <form [formGroup]="formDataOrganizer" (ngSubmit)="onSubmit()">
+    <p>
+      <label for="name"></label>
+      <input
+        name="name"
+        type="text"
+        placeholder="Nome dell'organizzatore"
+        formControlName="name"
+      />
+      @if (formDataOrganizer.get('name')?.invalid && formDataOrganizer.get('name')?.touched) {
+      <label for="error" class="error">*{{ getErrorMessage("name") }}</label>
+      }
+    </p>
+
+    <p>
+      <label for="address"></label>
+      <input
+        name="address"
+        type="text"
+        placeholder="Indirizzo"
+        formControlName="address"
+      />
+      @if (formDataOrganizer.get('address')?.invalid && formDataOrganizer.get('address')?.touched)
+      {
+      <label for="error" class="error">*{{ getErrorMessage("address") }}</label>
+      }
+    </p>
+
+    <p>
+      <label for="email"></label>
+      <input type="email" placeholder="Email" formControlName="email" />
+      @if (formDataOrganizer.get('email')?.invalid && formDataOrganizer.get('email')?.touched) {
+      <label for="error" class="error">*{{ getErrorMessage("email") }}</label>
+      }
+    </p>
+    <p>
+      <label for="password"></label>
+      <input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+      @if (formDataOrganizer.get('password')?.invalid &&
+      formDataOrganizer.get('password')?.touched) {
+      <label for="error" class="error"
+        >*{{ getErrorMessage("password") }}</label
+      >
+      }
+    </p>
+    <p class="actions">
+      <button
+        type="submit"
+        id="submit-button"
+        [disabled]="!formDataOrganizer.valid"
+      >
+        Registrati
+      </button>
+    </p>
+  </form>
+  }
 </section>
