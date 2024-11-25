@@ -1,6 +1,6 @@
 <section class="container">
   <div class="container__content">
-    @if(loggedIn){
+    @if(loggedIn){ @if(userType == 'u'){
     <h1><strong>Eventi</strong> a cui parteciperai</h1>
     <div class="tickets">
       @for (event of events; track event.id) {
@@ -13,6 +13,20 @@
       }
     </div>
     }@else {
+    <h1><strong>Eventi</strong> che hai organizzato</h1>
+    <div class="tickets">
+      @for (event of events; track event.id) {
+      <app-ticket
+        [title]="event.title"
+        [date]="event.date"
+        [imgSrc]="event.img"
+        [organizer]="event.organizer.name"
+      />
+      }
+      <app-new-event />
+    </div>
+
+    } }@else {
     <h1><strong>Accedi</strong> per vedere i tuoi biglietti</h1>
     }
   </div>

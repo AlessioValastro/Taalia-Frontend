@@ -1,0 +1,74 @@
+<section class="container">
+  <img src="logo/gob/svg/logo-no-background.svg" alt="logo" />
+  <h2>Crea un nuovo evento!</h2>
+  <p>fai del tuo <strong>meglio</strong></p>
+  <form [formGroup]="formData" (ngSubmit)="onSubmit()">
+    <p>
+      <label for="title"></label>
+      <input
+        type="text"
+        placeholder="Titolo dell'evento"
+        formControlName="title"
+      />
+      @if (formData.get('title')?.invalid && formData.get('title')?.dirty &&
+      formData.get('title')?.touched) {
+      <label for="error" class="error">*{{ getErrorMessage("title") }}</label>
+      }
+    </p>
+    <p>
+      <label for="data"></label>
+      <input type="date" formControlName="date" />
+      @if (formData.get('date')?.invalid && formData.get('date')?.touched) {
+      <label for="error" class="error">*{{ getErrorMessage("date") }}</label>
+      } @if( errMessage != ''){
+      <label for="error" class="error">*{{ errMessage }}</label>
+      }
+    </p>
+
+    <p>
+      <label for="address"></label>
+      <input
+        type="text"
+        placeholder="Dove si terrà"
+        formControlName="address"
+      />
+      @if (formData.get('address')?.invalid && formData.get('address')?.dirty &&
+      formData.get('address')?.touched) {
+      <label for="error" class="error">*{{ getErrorMessage("address") }}</label>
+      }
+    </p>
+    <p>
+      <label for="description"></label>
+      <textarea
+        type="text"
+        placeholder="Descrivi l'evento"
+        formControlName="description"
+      ></textarea>
+      @if (formData.get('description')?.invalid &&
+      formData.get('description')?.dirty &&
+      formData.get('description')?.touched) {
+      <label for="error" class="error"
+        >*{{ getErrorMessage("description") }}</label
+      >
+      }
+    </p>
+    <p>
+      <label for="price"></label>
+      <input
+        type="text"
+        placeholder="Quanto costerà partecipare"
+        formControlName="price"
+      />
+      @if (formData.get('price')?.invalid && formData.get('price')?.dirty &&
+      formData.get('price')?.touched) {
+      <label for="error" class="error">*{{ getErrorMessage("price") }}</label>
+      }
+    </p>
+
+    <p class="actions">
+      <button type="submit" id="submit-button" [disabled]="!formData.valid">
+        Crea
+      </button>
+    </p>
+  </form>
+</section>

@@ -11,13 +11,15 @@ export class EventsService {
   http = inject(HttpClient);
   authService = inject(AuthService);
 
-  getEventsList(userId: number) {
-    return this.http.get(`api/get-events/${userId}`);
+  getEventsList(userId: number, userType: string) {
+    return this.http.get(`api/get-events/${userId}/${userType}`);
   }
 
   getAllEventsList() {
     return this.http.get('api/get-all-events');
   }
 
-  
+  createNewEvent(data: any) {
+    return this.http.post('api/new-event', data, { withCredentials: true });
+  }
 }

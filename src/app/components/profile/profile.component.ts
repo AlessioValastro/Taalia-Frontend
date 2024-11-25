@@ -5,11 +5,12 @@ import { AuthService } from '../../services/auth.service';
 import { EventsService } from '../../services/events.service';
 import { Event } from '../../interfaces/event';
 import { EventsCarouselComponent } from "../events-carousel/events-carousel.component";
+import { NewEventComponent } from "../new-event/new-event.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [TicketComponent, EventsCarouselComponent],
+  imports: [TicketComponent, EventsCarouselComponent, NewEventComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
@@ -36,6 +37,7 @@ export class ProfileComponent implements OnInit {
           this.userID = response.user_id;
           this.userName = response.name;
           this.loggedIn = true;
+          this.userType = response.user_type;
           this.authService.updateLoginStatus(true);
           this.authService.updateUser(
             this.userName,
@@ -56,7 +58,7 @@ export class ProfileComponent implements OnInit {
 
   loadEvents(): void {
     if (this.userID) {
-      this.eventsService.getEventsList(this.userID).subscribe({
+      this.eventsService.getEventsList(this.userID, this.userType).subscribe({
         next: (response: any) => {
           this.events = response;
         },
