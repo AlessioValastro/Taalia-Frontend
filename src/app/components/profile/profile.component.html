@@ -5,6 +5,7 @@
     <div class="tickets">
       @for (event of events; track event.id) {
       <app-ticket
+        [eventId]="event.id"
         [title]="event.title"
         [date]="event.date"
         [imgSrc]="event.img"
@@ -17,6 +18,7 @@
     <div class="tickets">
       @for (event of events; track event.id) {
       <app-ticket
+        [eventId]="event.id"
         [title]="event.title"
         [date]="event.date"
         [imgSrc]="event.img"

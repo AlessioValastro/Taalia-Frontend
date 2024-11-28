@@ -4,6 +4,7 @@
     @for (event of events; track event.id) {
     <div class="wrapper">
       <app-ticket
+        [eventId]="event.id"
         [title]="event.title"
         [date]="event.date"
         [imgSrc]="event.img"

@@ -27,5 +27,17 @@ strong {
 .tickets {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 30px;
+
+  overflow-x: scroll;
+  padding-bottom: 30px;
 }
+.tickets::-webkit-scrollbar {
+  display: none;
+}
+.tickets > *{
+  flex-shrink: 0;
+}
+
+

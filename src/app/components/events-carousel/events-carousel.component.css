@@ -20,6 +20,9 @@ strong {
   overflow-x: auto;
   padding-bottom: 30px;
 }
+.events::-webkit-scrollbar{
+  display: none;
+}
 .wrapper {
   zoom: 60%;
 }

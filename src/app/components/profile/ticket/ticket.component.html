@@ -1,9 +1,11 @@
-<section class="container">
-  <img [src]="imgSrc()" alt="background" id="ticket-background" />
-  <div class="overlay"></div>
-  <h3>{{ title() }}</h3>
-  <h4>{{ organizer() }}</h4>
-  <p>
-    <b>{{ date() | date }}</b>
-  </p>
-</section>
+<a [routerLink]="['/event-overview']" [queryParams]="{ eventId }"
+  ><section class="container">
+    <img [src]="imgSrc()" alt="background" id="ticket-background" />
+    <div class="overlay"></div>
+    <h3>{{ title() }}</h3>
+    <h4>{{ organizer() }}</h4>
+    <p>
+      <b>{{ date() | date }}</b>
+    </p>
+  </section></a
+>

@@ -22,4 +22,8 @@ export class EventsService {
   createNewEvent(data: any) {
     return this.http.post('api/new-event', data, { withCredentials: true });
   }
+
+  getEventInfo(eventId: string | null) {
+    return this.http.get(`api/get-event/${eventId}`);
+  }
 }
