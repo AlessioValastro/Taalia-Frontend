@@ -1,0 +1,32 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    overflow: hidden;
+}
+.container {
+    border: 1px solid red;
+    height: 80%;
+    width: 80%;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 3;
+}
+.overview-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    overflow: hidden;
+    width: 100%;
+    filter: blur(30px) brightness(0.7);
+}

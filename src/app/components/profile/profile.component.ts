@@ -6,11 +6,12 @@ import { EventsService } from '../../services/events.service';
 import { Event } from '../../interfaces/event';
 import { EventsCarouselComponent } from "../events-carousel/events-carousel.component";
 import { NewEventComponent } from "../new-event/new-event.component";
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [TicketComponent, EventsCarouselComponent, NewEventComponent],
+  imports: [TicketComponent, EventsCarouselComponent, NewEventComponent, RouterOutlet],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })

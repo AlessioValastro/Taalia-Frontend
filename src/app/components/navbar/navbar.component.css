@@ -7,8 +7,7 @@
   height: 100px;
   background-color: #1e1e1e;
 
-  position: fixed;
-  z-index: 100;
+  z-index: 1000;
 
 }
 
